@@ -277,7 +277,9 @@ public class EnderCoreTransformer implements IClassTransformer {
       ClassReader classReader = new ClassReader(basicClass);
       ClassWriter cw = new ClassWriter(classReader, 0);
 
-      MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC, deObf ? "isElytraFlying" : "func_184613_cA", "()Z", null, null);
+      cw.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC, "net/minecraft/entity/player/EntityPlayer", null, "net/minecraft/entity/EntityLivingBase", null);
+
+      MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC, deObf ? "isElytraFlying" : "func_184613_cA", "()Z", "B", null);
       mv.visitCode();
       Label l0 = new Label();
       mv.visitLabel(l0);
